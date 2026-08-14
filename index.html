@@ -1,0 +1,1041 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Achal Utkarsh Gupta — Personal Profile</title>
+    <style>
+      :root {
+        --paper: #fffdf8;
+        --ink: #18212b;
+        --muted: #68727d;
+        --line: #ddd5c8;
+        --gold: #aa7928;
+        --gold-soft: #f4ead8;
+        --navy: #173650;
+        --serif: Georgia, "Times New Roman", serif;
+        --sans: "Segoe UI", Arial, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        background: #e8e5df;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: var(--sans);
+        line-height: 1.45;
+        background: #e8e5df;
+      }
+      .toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        padding: 11px;
+        background: #151b22;
+      }
+      .toolbar button {
+        border: 0;
+        border-radius: 999px;
+        padding: 10px 15px;
+        background: #fff;
+        font: 700 12px var(--sans);
+        cursor: pointer;
+      }
+      .document {
+        width: 210mm;
+        margin: 18px auto 32px;
+      }
+      .page {
+        position: relative;
+        width: 210mm;
+        height: 297mm;
+        overflow: hidden;
+        background: var(--paper);
+        padding: 15mm 16mm 14mm;
+        margin: 0 0 18px;
+        box-shadow: 0 18px 55px rgba(0, 0, 0, 0.13);
+        page-break-after: always;
+      }
+      .page:last-child {
+        page-break-after: auto;
+      }
+      .page:before {
+        content: "";
+        position: absolute;
+        left: 7mm;
+        right: 7mm;
+        top: 7mm;
+        bottom: 7mm;
+        border: 1px solid rgba(170, 121, 40, 0.26);
+        pointer-events: none;
+      }
+      .corner {
+        position: absolute;
+        width: 58mm;
+        height: 58mm;
+        border: 1px solid rgba(170, 121, 40, 0.2);
+        border-radius: 14px;
+        transform: rotate(45deg);
+        pointer-events: none;
+      }
+      .corner.a {
+        right: -34mm;
+        top: -34mm;
+      }
+      .corner.b {
+        left: -34mm;
+        bottom: -34mm;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+      h1 {
+        font: 700 30px/1.04 var(--serif);
+        color: var(--navy);
+        margin-bottom: 7px;
+      }
+      h2 {
+        font: 700 23px/1.1 var(--serif);
+        color: var(--navy);
+        margin-bottom: 9px;
+      }
+      h3 {
+        font-size: 11.5px;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 6px;
+      }
+      .eyebrow {
+        font-size: 9.8px;
+        letter-spacing: 2.2px;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 800;
+        margin-bottom: 7px;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      .lead {
+        font: 400 14.5px/1.68 var(--serif);
+      }
+      .rule {
+        width: 42px;
+        height: 2px;
+        background: var(--gold);
+        margin: 10px 0 16px;
+      }
+      .page-no {
+        position: absolute;
+        right: 16mm;
+        bottom: 8mm;
+        font-size: 9px;
+        letter-spacing: 1.4px;
+        color: var(--muted);
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 11mm;
+        align-items: start;
+      }
+      .hero-photos {
+        height: 143mm;
+        display: grid;
+        grid-template-rows: 80mm 50mm;
+        gap: 8px;
+      }
+      .photo {
+        overflow: hidden;
+        border-radius: 17px;
+        border: 1px solid var(--line);
+        background: #ddd;
+      }
+      .photo img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+      }
+      .suit img {
+        object-position: 50% 99%;
+      }
+      .india img {
+        object-position: 47% 38%;
+      }
+      .tagline {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--muted);
+        margin-bottom: 14px;
+      }
+      .facts {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px 12px;
+        margin-top: 13px;
+      }
+      .fact {
+        border-top: 1px solid var(--line);
+        padding-top: 7px;
+      }
+      .fact b {
+        display: block;
+        font-size: 9.4px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 3px;
+      }
+      .fact span {
+        font-size: 11.7px;
+        font-weight: 700;
+      }
+      .section {
+        margin-top: 10mm;
+      }
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12mm;
+      }
+      .timeline {
+        display: grid;
+        gap: 8px;
+      }
+      .step {
+        display: grid;
+        grid-template-columns: 8px 1fr;
+        gap: 8px;
+      }
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--gold);
+        margin-top: 9px;
+      }
+      .step strong {
+        font-size: 11.4px;
+      }
+      .step span {
+        font-size: 10.4px;
+        color: var(--muted);
+      }
+      .highlight {
+        padding: 13px 15px;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        background: var(--gold-soft);
+      }
+      .highlight .big {
+        font: 700 18.5px/1.16 var(--serif);
+        color: var(--navy);
+        margin-bottom: 7px;
+      }
+      .family-hero {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 12px;
+        margin-top: 13px;
+      }
+      .parents-photo {
+        height: 80mm;
+      }
+      .parents-photo img {
+        object-position: 50% 39%;
+      }
+      .parents-copy {
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        padding: 13px 15px;
+        background: rgba(255, 255, 255, 0.24);
+      }
+      .parents-copy .name {
+        font: 700 15px var(--serif);
+        color: var(--navy);
+        margin-bottom: 4px;
+      }
+      .parents-copy p {
+        font-size: 10.8px;
+        margin-bottom: 4px;
+      }
+      .family-row {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        gap: 12px;
+        margin-top: 12px;
+      }
+      .family-card {
+        display: grid;
+        grid-template-columns: 42% 58%;
+        height: 79mm;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.2);
+      }
+      .family-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .brother img {
+        object-position: 50% 25%;
+      }
+      .chacha img {
+        object-position: 50% 45%;
+      }
+      .family-card .copy {
+        padding: 11px 12px;
+      }
+      .family-card .name {
+        font: 700 14px var(--serif);
+        color: var(--navy);
+        margin-bottom: 4px;
+      }
+      .family-card p {
+        font-size: 10.1px;
+        margin-bottom: 3px;
+      }
+      .chacha-card {
+        height: 79mm;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.2);
+        display: grid;
+        grid-template-rows: 57mm 22mm;
+      }
+      .chacha-card .photo {
+        border: 0;
+        border-radius: 0;
+      }
+      .chacha-card .photo img {
+        object-position: 50% 50%;
+      }
+      .chacha-card .caption {
+        padding: 8px 11px;
+        font-size: 10.1px;
+      }
+      .chacha-card .caption strong {
+        font: 700 13px var(--serif);
+        color: var(--navy);
+        display: block;
+        margin-bottom: 2px;
+      }
+      .family-bg {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px 18px;
+        margin-top: 11px;
+      }
+      .family-bg .item {
+        padding: 8px 0;
+        border-top: 1px solid var(--line);
+      }
+      .family-bg strong {
+        display: block;
+        font-size: 11px;
+        margin-bottom: 2px;
+      }
+      .family-bg span {
+        font-size: 10.2px;
+        color: var(--muted);
+      }
+      .trip-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 8px;
+      }
+      .trip-title strong {
+        font: 700 21px var(--serif);
+        color: var(--navy);
+      }
+      .trip-title span {
+        font-size: 9.5px;
+        letter-spacing: 1.4px;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-weight: 800;
+      }
+      .ladakh-hero {
+        height: 112mm;
+      }
+      .ladakh-hero img {
+        object-position: 50% 46%;
+      }
+      .ladakh-bottom {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 10px;
+        margin-top: 10px;
+      }
+      .ladakh-bottom .photo {
+        height: 74mm;
+      }
+      .ladakh-back img {
+        object-position: 50% 48%;
+      }
+      .ladakh-two img {
+        object-position: 50% 44%;
+      }
+      .memory-bar {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .memory {
+        border-top: 2px solid var(--gold);
+        padding-top: 7px;
+      }
+      .memory strong {
+        display: block;
+        font-size: 10.8px;
+        margin-bottom: 2px;
+      }
+      .memory span {
+        font-size: 9.9px;
+        color: var(--muted);
+      }
+      .vietnam-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 10px;
+      }
+      .vietnam-main {
+        height: 112mm;
+      }
+      .vietnam-main img {
+        object-position: 50% 44%;
+      }
+      .vietnam-side {
+        display: grid;
+        grid-template-rows: 55mm 55mm;
+        gap: 6px;
+      }
+      .kayak img {
+        scale: 1.5;
+        object-position: 50% 50%;
+      }
+      .viet1 img {
+        object-position: 50% 44%;
+      }
+      .other-title {
+        margin-top: 10mm;
+      }
+      .other-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 9px;
+      }
+      .other-grid .photo {
+        height: 60mm;
+      }
+      .gangtok img {
+        object-position: 50% 48%;
+      }
+      .kerala1 img {
+        object-position: 50% 48%;
+      }
+      .kanyakumari img {
+        object-position: 50% 47%;
+      }
+      .interests {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .interest {
+        border-top: 2px solid var(--gold);
+        padding-top: 7px;
+      }
+      .interest strong {
+        display: block;
+        font-size: 10.8px;
+        margin-bottom: 2px;
+      }
+      .interest span {
+        font-size: 9.8px;
+        color: var(--muted);
+      }
+      .beliefs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .belief {
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        padding: 13px 14px;
+      }
+      .belief p {
+        font-size: 11px;
+        margin-bottom: 0;
+      }
+      .values {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin: 12px 0;
+      }
+      .pill {
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: var(--gold-soft);
+        border: 1px solid var(--line);
+        font-size: 10px;
+        font-weight: 800;
+      }
+      .quote {
+        padding: 14px 16px;
+        border-left: 3px solid var(--gold);
+        background: rgba(170, 121, 40, 0.06);
+      }
+      .quote strong {
+        display: block;
+        font: 700 19px var(--serif);
+        color: var(--navy);
+        margin-bottom: 5px;
+      }
+      .quote p {
+        font-size: 11px;
+        margin-bottom: 0;
+      }
+      .closing {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 12mm;
+        align-items: center;
+        margin-top: 10mm;
+      }
+      .closing .photo {
+        height: 82mm;
+      }
+      .closing .photo img {
+        object-position: 50% 40%;
+      }
+      .small-joys {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+        margin-top: 8mm;
+      }
+      .small-joy {
+        border-top: 2px solid var(--gold);
+        padding-top: 6px;
+        font-size: 10.2px;
+      }
+      .small-joy strong {
+        display: block;
+        margin-bottom: 2px;
+        color: var(--navy);
+      }
+      .small-joy span {
+        color: var(--muted);
+        font-size: 9.7px;
+      }
+      .addresses {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 9px;
+        margin-top: 11px;
+      }
+      .address {
+        border-top: 1px solid var(--line);
+        padding-top: 7px;
+        font-size: 9.8px;
+      }
+      .address strong {
+        display: block;
+        color: var(--navy);
+        margin-bottom: 3px;
+      }
+      .contactbar {
+        margin-top: 11px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        background: var(--navy);
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        font-size: 10px;
+      }
+      .contactbar a {
+        color: #fff;
+        text-decoration: none;
+      }
+      @page {
+        size: A4;
+        margin: 0;
+      }
+      @media print {
+        html,
+        body {
+          background: #fff;
+        }
+        .toolbar {
+          display: none;
+        }
+        .document {
+          margin: 0;
+          width: auto;
+        }
+        .page {
+          margin: 0;
+          box-shadow: none;
+          break-after: page;
+          page-break-after: always;
+        }
+        .page:last-child {
+          break-after: auto;
+          page-break-after: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <button onclick="window.print()">Print / Save as PDF</button>
+    </div>
+    <main class="document">
+      <section class="page">
+        <div class="corner a"></div>
+        <div class="corner b"></div>
+        <div class="hero">
+          <div>
+            <div class="eyebrow">Personal Profile</div>
+            <h1>Achal Utkarsh Gupta</h1>
+            <div class="tagline">
+              Engineering Group Lead · Software Professional · Law Graduate
+            </div>
+            <div class="rule"></div>
+            <p class="lead">
+              Calm and grounded by nature, I enjoy balancing professional
+              ambition with family, experiences and the simpler things in life.
+              I currently lead an engineering team in the software industry,
+              while my curiosity beyond technology led me to pursue an LL.B.
+              from Delhi University alongside my full-time career.
+            </p>
+            <p class="muted" style="font-size: 11.3px">
+              Outside work, I enjoy travelling, discovering new food, movies,
+              long drives and experiences that take me somewhere new.
+            </p>
+            <div class="facts">
+              <div class="fact">
+                <b>Also known as</b><span>Mohit Gupta</span>
+              </div>
+              <div class="fact">
+                <b>Date of Birth</b><span>04 Dec 1997</span>
+              </div>
+              <div class="fact"><b>Birthplace</b><span>Patna, Bihar</span></div>
+              <div class="fact"><b>Height</b><span>5'11&quot;</span></div>
+              <div class="fact">
+                <b>Languages</b><span>Hindi · English</span>
+              </div>
+              <div class="fact">
+                <b>Annual Package</b><span>₹35 Lakhs</span>
+              </div>
+            </div>
+          </div>
+          <div class="hero-photos">
+            <div class="photo suit">
+              <img src="assets/suit_crop.jpg" alt="Achal portrait" />
+            </div>
+            <div class="photo india">
+              <img src="assets/india_gate.jpg" alt="Achal at India Gate" />
+            </div>
+          </div>
+        </div>
+        <div class="section two-col">
+          <div>
+            <div class="eyebrow">Professional Journey</div>
+            <h2>Building teams, not just products.</h2>
+            <p style="font-size: 11.2px">
+              Starting as a software developer, I progressed through
+              increasingly responsible engineering roles before becoming the
+              youngest Engineering Group Lead at FranConnect India Software Pvt.
+              Ltd. Today, I lead the UI engineering function, with
+              responsibility for the team, its development and the work we
+              deliver.
+            </p>
+            <div class="timeline">
+              <div class="step">
+                <div class="dot"></div>
+                <div>
+                  <strong>Software Developer</strong><br /><span
+                    >Engineering foundation</span
+                  >
+                </div>
+              </div>
+              <div class="step">
+                <div class="dot"></div>
+                <div>
+                  <strong>Senior Software Developer</strong><br /><span
+                    >Greater technical ownership</span
+                  >
+                </div>
+              </div>
+              <div class="step">
+                <div class="dot"></div>
+                <div>
+                  <strong>Lead Developer</strong><br /><span
+                    >Leadership and delivery responsibility</span
+                  >
+                </div>
+              </div>
+              <div class="step">
+                <div class="dot"></div>
+                <div>
+                  <strong>Engineering Group Lead</strong><br /><span
+                    >UI department · hiring · training · ownership</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="highlight">
+              <div class="eyebrow">A defining chapter</div>
+              <div class="big">
+                Engineering by profession.<br />Law by choice.
+              </div>
+              <p style="font-size: 10.8px; margin-bottom: 0">
+                While continuing my full-time engineering career, I pursued an
+                LL.B. from Campus Law Centre, Faculty of Law, University of
+                Delhi. Managing both simultaneously has been one of the most
+                demanding and meaningful chapters of my journey.
+              </p>
+            </div>
+            <div style="margin-top: 11px">
+              <h3>Education</h3>
+              <p style="font-size: 10.8px; margin-bottom: 8px">
+                <strong>LL.B.</strong><br /><span class="muted"
+                  >Campus Law Centre, Faculty of Law, University of Delhi <br />
+                  2023–2026</span
+                >
+              </p>
+              <p style="font-size: 10.8px; margin-bottom: 8px">
+                <strong>B.Tech — Computer Science & Engineering</strong
+                ><br /><span class="muted"
+                  >VIT Vellore<br />
+                  2015–2019</span
+                >
+              </p>
+              <p style="font-size: 10px">
+                <strong>LinkedIn</strong><br /><a
+                  style="color: var(--gold); text-decoration: none"
+                  href="https://www.linkedin.com/in/achal-utkarsh-gupta/"
+                  >linkedin.com/in/achal-utkarsh-gupta/</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="page-no">01</div>
+      </section>
+
+      <section class="page">
+        <div class="corner a"></div>
+        <div class="corner b"></div>
+        <div class="eyebrow">Family & Roots</div>
+        <h2>Close-knit, grounded and well established.</h2>
+        <p class="muted" style="font-size: 11.4px; max-width: 155mm">
+          I come from an upper-middle-class family with strong roots in Bihar
+          and a deep emphasis on education, responsibility and mutual support.
+        </p>
+        <div class="family-hero">
+          <div class="photo parents-photo">
+            <img src="assets/parents.jpg" alt="Parents" />
+          </div>
+          <div class="parents-copy">
+            <div class="name">Ashok Kumar Gupta — Father</div>
+            <p>B.Tech (Civil)</p>
+            <p><strong>Real Estate Developer</strong></p>
+            <p class="muted">
+              Office: Stock Point, Lalu Rabri Mor, Patna Bypass
+            </p>
+            <div style="height: 11px"></div>
+            <div class="name">Anita Gupta — Mother</div>
+            <p>M.Sc. (Botany)</p>
+            <p><strong>Police Officer · Government of Bihar</strong></p>
+          </div>
+        </div>
+        <div class="family-row">
+          <div class="family-card brother">
+            <img src="assets/brother.jpg" alt="Atal Ayush" />
+            <div class="copy">
+              <div class="name">Atal Ayush (Mohak Gupta)</div>
+              <p>History Honours · Satyawati College, DU</p>
+              <p>LL.B. · Campus Law Centre, DU</p>
+              <p><strong>Advocate · Supreme Court of India</strong></p>
+              <p>Civil Services & Judiciary Aspirant</p>
+              <p class="muted" style="margin-top: 6px">
+                My elder brother has always been one of my strongest sources of
+                support — generous by nature and someone I deeply respect.
+              </p>
+            </div>
+          </div>
+          <div class="chacha-card">
+            <div class="photo">
+              <img src="assets/chacha_family.jpg" alt="Chacha family" />
+            </div>
+            <div class="caption">
+              <strong>Chacha's Family</strong>Subhash Prasad Gupta, I.F.S. · Dr.
+              Ruchi Gupta , Satakshi Gupta ( Runjhun ), Subhansh Gupta ( Ritwik
+              )
+            </div>
+          </div>
+        </div>
+        <div class="section" style="margin-top: 9mm">
+          <h3>Family Background</h3>
+          <div class="family-bg">
+            <div class="item">
+              <strong>Subhash Prasad Gupta, I.F.S.</strong
+              ><span>Uncle · Ambassador of the Republic of Suriname</span>
+            </div>
+            <div class="item">
+              <strong>Dr. Ruchi Gupta</strong><span>Aunt</span>
+            </div>
+            <div class="item">
+              <strong>Late Surendra Prasad Gupta</strong
+              ><span>Paternal Grandfather · Zamindar · Dostiya, Sheohar</span>
+            </div>
+            <div class="item">
+              <strong>Ramendra Kr. Gupta</strong
+              ><span
+                >Maternal Grandfather · Former Mahamantri, Bihar Rajya Arya
+                Pratinidhi Sabha · Danapur, Patna</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="page-no">02</div>
+      </section>
+
+      <section class="page">
+        <div class="corner a"></div>
+        <div class="corner b"></div>
+        <div class="eyebrow">Life Beyond Work</div>
+        <div class="trip-title">
+          <strong>Ladakh</strong
+          ><span>Family · roads · mountains · Pangong</span>
+        </div>
+        <p class="lead" style="font-size: 13.6px; max-width: 160mm">
+          A family trip filled with bike rides, camel rides, Pangong Lake and
+          nights under a sky full of stars — a journey remembered as much for
+          the time together as for the landscape.
+        </p>
+        <div class="photo ladakh-hero">
+          <img src="assets/ladakh_lake.jpg" alt="Pangong Lake" />
+        </div>
+        <div class="ladakh-bottom">
+          <div class="photo ladakh-back">
+            <img src="assets/ladakh_back.jpg" alt="Ladakh valley" />
+          </div>
+          <div class="photo ladakh-two">
+            <img src="assets/ladakh_2.jpg" alt="Ladakh mountains" />
+          </div>
+        </div>
+        <div class="memory-bar">
+          <div class="memory">
+            <strong>Pangong Lake</strong
+            ><span>One of the highlights of the trip.</span>
+          </div>
+          <div class="memory">
+            <strong>Bike Rides</strong
+            ><span>Exploring the terrain at its own pace.</span>
+          </div>
+          <div class="memory">
+            <strong>Camel Ride</strong><span>Nubra Valley.</span>
+          </div>
+          <div class="memory">
+            <strong>Under the Stars</strong
+            ><span>Quiet evenings that stayed with me.</span>
+          </div>
+        </div>
+        <div class="page-no">03</div>
+      </section>
+
+      <section class="page">
+        <div class="corner a"></div>
+        <div class="corner b"></div>
+        <div class="eyebrow">Travel & Experiences</div>
+        <div class="trip-title">
+          <strong>Vietnam</strong
+          ><span>Family · Ha Long Bay · kayaking · coast</span>
+        </div>
+        <p class="muted" style="font-size: 11.3px; max-width: 160mm">
+          From cruising through Ha Long Bay to kayaking and exploring a
+          completely different culture together, Vietnam was another family trip
+          full of new experiences.
+        </p>
+        <div class="vietnam-grid">
+          <div class="photo vietnam-main">
+            <img src="assets/vietnam_solo.jpg" alt="Achal in Ha Long Bay" />
+          </div>
+          <div class="vietnam-side">
+            <div class="photo kayak">
+              <img src="assets/vietnam_kayak.jpg" alt="Kayaking in Vietnam" />
+            </div>
+            <div class="photo viet1">
+              <img src="assets/vietnam_1.jpg" alt="Vietnam" />
+            </div>
+          </div>
+        </div>
+        <div class="other-title">
+          <div class="trip-title">
+            <strong>More Journeys</strong
+            ><span>Gangtok · Kerala · discovering new places</span>
+          </div>
+        </div>
+        <div class="other-grid">
+          <div class="photo gangtok">
+            <img src="assets/gangtok.jpg" alt="Gangtok waterfall" />
+          </div>
+          <div class="photo kerala1">
+            <img src="assets/kerala_1.jpg" alt="Kerala" />
+          </div>
+          <div class="photo kanyakumari">
+            <img src="assets/kanyakumari.jpg" alt="Kanyakumari landscape" />
+          </div>
+        </div>
+        <div class="interests">
+          <div class="interest">
+            <strong>Food</strong
+            ><span>New cuisines, local flavours and street food.</span>
+          </div>
+          <div class="interest">
+            <strong>Driving</strong
+            ><span>Slow drives, classic Bollywood and empty highways.</span>
+          </div>
+          <div class="interest">
+            <strong>Movies</strong
+            ><span>Suspense and thrillers first; comedy and romance too.</span>
+          </div>
+          <div class="interest">
+            <strong>New Experiences</strong
+            ><span>Trying activities I have never done before.</span>
+          </div>
+        </div>
+        <div class="page-no">04</div>
+      </section>
+
+      <section class="page">
+        <div class="corner a"></div>
+        <div class="corner b"></div>
+        <div class="eyebrow">What Matters to Me</div>
+        <h2>A few things I believe in.</h2>
+        <div class="beliefs">
+          <article class="belief">
+            <h3>Family</h3>
+            <p>
+              To me, being family-oriented means showing up for the people who
+              matter, valuing those relationships and making time for them. I
+              also believe marriage means creating a family in which one's
+              partner becomes an equally important part of that circle.
+            </p>
+          </article>
+          <article class="belief">
+            <h3>People</h3>
+            <p>
+              I believe in standing up for people when I feel something is right
+              — even when they are not part of my immediate team or there is no
+              personal benefit involved. For me, fairness and ethics matter more
+              when they are inconvenient than when they are easy.
+            </p>
+          </article>
+        </div>
+        <div class="section" style="margin-top: 9mm">
+          <h3>Values I hold close</h3>
+          <div class="values">
+            <span class="pill">Honesty</span
+            ><span class="pill">Communication</span
+            ><span class="pill">Kindness</span><span class="pill">Ethics</span
+            ><span class="pill">Family Values</span>
+          </div>
+          <div class="quote">
+            <strong>Do good without keeping score.</strong>
+            <p>
+              Not everyone will remember what you did for them — and that is
+              alright. I believe genuine goodwill has a way of finding its way
+              back to you when it matters.
+            </p>
+          </div>
+        </div>
+        <div class="closing">
+          <div>
+            <h3>The person behind the profile</h3>
+            <p style="font: 400 14.4px/1.66 var(--serif)">
+              Serious when the situation demands it, light-hearted with the
+              people I am close to, occasionally moody, always learning — and
+              happiest when life has a little room for family, good food, a
+              memorable movie, rain, travel and an open road.
+            </p>
+          </div>
+          <div class="photo">
+            <img src="assets/solo_gurgaon.jpg" alt="Achal" />
+          </div>
+        </div>
+        <div class="small-joys">
+          <div class="small-joy">
+            <strong>Rain</strong
+            ><span>Especially stepping out and enjoying it.</span>
+          </div>
+          <div class="small-joy">
+            <strong>Movies</strong
+            ><span>A good suspense thriller is hard to beat.</span>
+          </div>
+          <div class="small-joy">
+            <strong>Night Drives</strong
+            ><span>Empty roads and classic Bollywood.</span>
+          </div>
+          <div class="small-joy">
+            <strong>Food</strong><span>New cuisines and street food.</span>
+          </div>
+        </div>
+        <div class="section" style="margin-top: 8mm">
+          <h3>Addresses</h3>
+          <div class="addresses">
+            <div class="address">
+              <strong>Delhi</strong>Flat No. 902, Tower 1 & 2,<br />Amaryllis
+              Society,<br />Karol Bagh, Delhi
+            </div>
+            <div class="address">
+              <strong>Patna</strong>202, Apna Awas Apartment,<br />Ashiana Digha
+              Road,<br />Patna, Bihar
+            </div>
+            <div class="address">
+              <strong>Muzaffarpur</strong>Mohak Complex,<br />Bariya Bus
+              Stand,<br />Muzaffarpur, Bihar
+            </div>
+          </div>
+          <div class="contactbar">
+            <!-- <div><strong>Contact</strong><br />9431294770 · 9507798794</div> -->
+            <div>
+              <strong>LinkedIn</strong><br /><a
+                href="https://www.linkedin.com/in/achal-utkarsh-gupta/"
+                >linkedin.com/in/achal-utkarsh-gupta/</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="page-no">05</div>
+      </section>
+    </main>
+  </body>
+</html>
